@@ -12,9 +12,9 @@ For timthumb Examples and documentation available on the project homepage: http:
 How to use
 ==========
 
-  &lt;img src="&lt;?php echo base_url(array(<br/>
-		'thumbnail', // Controller name<br/>
-		rawurlencode(base64_encode('http://ellislab.com/asset/css/img/')), // Image path/url<br/>
-		'100', // Settings Width x Height<br/>
-		'logo.png?q=1&zc=1'<br/>
-	));?&gt;" /&gt;
+&lt;img src="&lt;?php echo base_url(array(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'thumbnail', // Controller name<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rawurlencode(base64_encode('http://ellislab.com/asset/css/img/')), // Image path/url<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'100', // Settings Width x Height<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'logo.png?q=1&zc=1'	<br/>
+));?&gt;" /&gt;<br/>
