@@ -44,7 +44,7 @@
 */
 
 
-define('FILE_CACHE_DIRECTORY',FCPATH.'images/cache/'); // File cache directory
+define('FILE_CACHE_DIRECTORY',FCPATH.'images/cache'); // File cache directory
 
 define ('VERSION', '2.8.11');																		// Version of this script 
 //Load a config file if it exists. Otherwise, use the values below
@@ -159,6 +159,7 @@ if(! isset($ALLOWED_SITES)){
 		'imgur.com',
 		'imageshack.us',
 		'tinypic.com',
+		'fashionone.s3.amazonaws.com'
 	);
 }
 
@@ -284,13 +285,16 @@ class timthumb {
 				}
 			}
 		}
-
 		$cachePrefix = ($this->isURL ? '_ext_' : '_int_');
+	
+
 		if($this->isURL){
-			$arr = explode('&', $_SERVER ['QUERY_STRING']);
-			asort($arr);
-			//$this->cachefile = $this->cacheDirectory . '/' . FILE_CACHE_PREFIX . $cachePrefix . md5($this->salt . implode('', $arr) . $this->fileCacheVersion) . FILE_CACHE_SUFFIX;
-			$this->cachefile = $this->cacheDirectory . '/' . FILE_CACHE_PREFIX . $cachePrefix . md5($this->salt.'@'.$this->param('w','250'). implode('', $arr) . $this->fileCacheVersion) . FILE_CACHE_SUFFIX;
+								
+			$pu = parse_url($_SERVER['REQUEST_URI']);
+			parse_str($pu['query'],$query);
+
+			$this->cachefile = $this->cacheDirectory . '/' . FILE_CACHE_PREFIX . $cachePrefix . md5($this->salt . basename($pu['path']).md5(implode('',array_values($query))) . $this->fileCacheVersion) . FILE_CACHE_SUFFIX;
+
 		} else {
 			$this->localImage = $this->getLocalImagePath($this->src);
 			if(! $this->localImage){
@@ -1336,6 +1340,8 @@ $_GET['q'] = ((isset($query['q']) && in_array($query['q'],array(12,72,100))) ? $
 
 // Zoom crop
 $_GET['zc'] = ((isset($query['zc']) && $query['zc'] > 0) ? $query['zc'] : 0);
+
+$_GET['test'] = ((isset($query['test']) && $query['test'] == 1) ? 1 : 0);
 
 $url = str_replace($filename,'',$url);
 $url = rtrim($url,'/');
