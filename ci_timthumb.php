@@ -158,8 +158,7 @@ if(! isset($ALLOWED_SITES)){
 		'photobucket.com',
 		'imgur.com',
 		'imageshack.us',
-		'tinypic.com',
-		'fashionone.s3.amazonaws.com'
+		'tinypic.com'
 	);
 }
 
