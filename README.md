@@ -1,5 +1,4 @@
-CI_Timthumb
-===========
+## CI_Timthumb
 
 A timthumb CI controller implementation
 
@@ -9,8 +8,7 @@ GNU General Public License, version 2: http://www.gnu.org/licenses/old-licenses/
 
 For timthumb Examples and documentation available on the project homepage: http://www.binarymoon.co.uk/projects/timthumb/
 
-How to use
-==========
+## How to use
 
 &lt;img src="&lt;?php echo base_url(array(<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'thumbnail', // Controller name<br/>
